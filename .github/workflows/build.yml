@@ -3,10 +3,11 @@ name: Build Dsync
 on:
   push:
     branches: [main]
+    tags: ["v*", "V*"]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-windows:
@@ -35,3 +36,12 @@ jobs:
           path: publish/Dsync.exe
           if-no-files-found: error
           retention-days: 90
+
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Dsync ${{ github.ref_name }}
+          generate_release_notes: true
+          files: publish/Dsync.exe
+          fail_on_unmatched_files: true
