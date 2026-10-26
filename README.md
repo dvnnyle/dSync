@@ -1,5 +1,9 @@
 # Dsync
 
+<p align="center">
+  <img src="assets/logo_danny.png" alt="Dsync-logo" width="180">
+</p>
+
 Dsync er et enkelt Windows-program som hjelper deg med å synkronisere klokken.
 
 Programmet kan:
